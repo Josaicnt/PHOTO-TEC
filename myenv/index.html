@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo TEC</title>
+
+
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+
+        <div id="container">
+            <br>
+            <br>
+            <h1>PHOTO-TEC</h1>
+            <div id="photo">
+                <video id="video" autoplay></video>
+                <canvas id="overlay"></canvas>
+            </div>
+            <button class="btn-primary" onclick="takePhoto()"><i class="fas fa-camera"></i> Tomar Foto</button>
+            <button class="btn-primary" onclick="printPhoto()"><i class="fas fa-print"></i> Imprimir Foto</button>
+            <button class="btn-secondary" onclick="refreshPage()"><i class="fas fa-sync-alt"></i> Refrescar página</button>
+            
+            <img class="imagen" src="img/TECNM.png" alt="LOGO">
+
+        </div>
+    
+        <script>
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('overlay');
+            const context = canvas.getContext('2d');
+    
+            // Obtener acceso a la cámara
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    video.srcObject = stream;
+                })
+                .catch(err => {
+                    console.error('Error al acceder a la cámara:', err);
+                });
+
+    
+            // Tomar una foto
+            function takePhoto() {
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                fetch('/take_photo', { method: 'POST' })
+                    .then(response => {
+                        if (response.ok) {
+                            document.getElementById('photo').innerHTML = '<img src="/static/photo.jpg" alt="Last Photo">';
+                            console.log("no c q es");
+                        } else {
+                            alert('ERROR AL TOMAR LA FOTO');
+                        }
+                    });
+            }
+    
+       //Imprimir Foto
+       function printPhoto() {
+            var photoUrl = document.getElementById("capturedPhoto").src;
+            if (photoUrl) {
+                var printWindow = window.open(photoUrl, "_blank");
+                printWindow.print();
+            } else {
+                alert("No photo captured yet.");
+            }
+        }
+        
+          // Actualizar la página
+          function refreshPage() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Bungee+Spice&family=Cute+Font&family=Dokdo&family=El+Messiri:wght@500&family=Honk&family=IBM+Plex+Mono:wght@100;200;400;500&family=Inter:wght@100..900&family=Jersey+10&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:wght@700&family=Michroma&family=Moirai+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nosifer&family=Nunito+Sans:opsz,wght@6..12,200&family=Nunito:wght@200;300&family=Pixelify+Sans:wght@400;500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@300&family=Rowdies:wght@300;400;700&family=Salsa&family=Sansita&family=Urbanist:wght@100;200;300&display=swap');
+
+body {
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-image: url('background.jpg');
+    background-image: -webkit-linear-gradient( #edf2ff, #453eed);
+}
+
+
+h1{
+    text-align: center;
+    color: #0f3af3;
+    margin-bottom: 20px;
+    font-family: "Jersey 10", sans-serif;
+}
+
+img {
+    position: absolute;
+    right: 125%;
+    bottom: -30%;
+}
+
+#container {
+    margin: 50px auto;
+    max-width: 600px;
+    position: relative;
+}
+
+#container h1 {
+    font-size: 100px;
+    margin-top: -90px;
+}
+
+#container .btn-primary {
+    border-radius: 50px;
+}
+
+#container .btn-secondary {
+    border-radius: 50px;
+}
+
+#photo {
+    margin-bottom: 20px;
+    position: relative;
+    text-align: center;
+}
+
+#video {
+    width: 100%;
+    height: auto;
+    border: 2px solid #007bff;
+    border-radius: 50px;
+    text-align: center;
+    border-image: linear-gradiente(to right, red, blue,) 1;
+    border-image-slice: 1;
+    animation: animateBorder 5s linear infinite;
+    border-width: 8px;
+}
+
+   /*ANIMACION DE OVERLAY DE COLORES*/
+@keyframes animateBorder {
+    0% {
+      border-image-source: linear-gradient(to right, #8cc2ff, blue);
+    }
+    50% {
+      border-image-source: linear-gradient(to right, #e9f5ff, #5f9bff);
+    }
+    80% {
+      border-image-source: linear-gradient(to right,#1948ff, #007bff);
+    }
+  }
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    text-align: center;
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #453eed;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #41ee3a; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 5px;
+}
+
+.btn-secondary:hover {
+    color: red;
+}
+
+
